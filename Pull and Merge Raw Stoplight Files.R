@@ -34,6 +34,10 @@ stoplight.alldata<-rbind.fill(stop.datalist)
 #exclude lines of dashes or subject ID 
 stoplight.alldata<-subset(stoplight.alldata, V2=="1")
 
+#convert wonky date format to proper one
+stoplight.alldata$DateofVisit<-as.Date(as.character(stoplight.alldata$DateofVisit), format="%Y%m%d")
+
+
 #Write table
 write.table(stoplight.alldata, file="stoplight.csv", sep=",")
 
